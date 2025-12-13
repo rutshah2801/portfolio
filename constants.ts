@@ -217,19 +217,19 @@ export const CERTIFICATIONS: CertificationItem[] = [
     name: "Google Business Intelligence Professional Certificate",
     issuer: "Coursera",
     date: "In Progress",
-    link: "https://www.coursera.org/professional-certificates/google-business-intelligence"
+    //link: "https://www.coursera.org/professional-certificates/google-business-intelligence"
   },
   {
     name: "Google Project Management Professional Certificate",
     issuer: "Coursera",
     date: "Expected Nov. 2025",
-    link: "https://www.coursera.org/professional-certificates/google-project-management"
+    //link: "https://www.coursera.org/professional-certificates/google-project-management"
   },
   {
     name: "Supply Chain Foundations: Managing the Process",
     issuer: "LinkedIn Learning",
     date: "Expected May 2025",
-    link: "https://www.linkedin.com/learning/supply-chain-foundations-managing-the-process"
+    //link: "https://www.linkedin.com/learning/supply-chain-foundations-managing-the-process"
   }
 ];
 

@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { PERSONAL_INFO } from '../constants';
-import { Mail, Phone, Linkedin, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, Phone, Linkedin, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+
+// EmailJS credentials from environment variables
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,7 +21,8 @@ const Contact: React.FC = () => {
     message: ''
   });
 
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const validateForm = () => {
     let isValid = true;
@@ -44,18 +51,44 @@ const Contact: React.FC = () => {
     return isValid;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // Simulate API submission
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setSubmitStatus('loading');
+      setErrorMessage('');
       
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            message: formData.message,
+            to_name: PERSONAL_INFO.name,
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+        
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 5000);
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        setSubmitStatus('error');
+        setErrorMessage('Failed to send message. Please try again or email directly.');
+        
+        // Reset status after 5 seconds
+        setTimeout(() => {
+          setSubmitStatus('idle');
+          setErrorMessage('');
+        }, 5000);
+      }
     }
   };
 
@@ -169,10 +202,14 @@ const Contact: React.FC = () => {
 
               <button 
                 type="submit" 
-                disabled={submitStatus === 'success'}
+                disabled={submitStatus === 'success' || submitStatus === 'loading'}
                 className={`w-full flex justify-center items-center py-3.5 px-4 rounded-xl font-bold font-heading transition-all shadow-lg ${
                   submitStatus === 'success' 
                     ? 'bg-green-600 text-white cursor-default' 
+                    : submitStatus === 'error'
+                    ? 'bg-red-600 text-white'
+                    : submitStatus === 'loading'
+                    ? 'bg-brand-600/70 text-white cursor-wait'
                     : 'bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-500 hover:to-purple-500 text-white hover:shadow-brand-500/25'
                 }`}
               >
@@ -181,10 +218,24 @@ const Contact: React.FC = () => {
                     <CheckCircle className="mr-2" size={20} />
                     Message Sent!
                   </>
+                ) : submitStatus === 'loading' ? (
+                  <>
+                    <Loader2 className="mr-2 animate-spin" size={20} />
+                    Sending...
+                  </>
+                ) : submitStatus === 'error' ? (
+                  <>
+                    <AlertCircle className="mr-2" size={20} />
+                    Failed to Send
+                  </>
                 ) : (
                   'Send Message'
                 )}
               </button>
+              
+              {errorMessage && (
+                <p className="text-center text-sm text-red-400 mt-2">{errorMessage}</p>
+              )}
             </form>
           </div>
 

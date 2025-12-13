@@ -141,12 +141,14 @@ const Hero: React.FC = () => {
               <Mail className="w-5 h-5 mr-2" />
               Contact Me
             </a>
-            <button 
+            <a 
+              href="/Resumes.pdf"
+              download="Rutvi_Shah_Resume.pdf"
               className="inline-flex items-center justify-center px-8 py-4 text-base font-bold font-heading rounded-xl text-slate-700 bg-white/70 hover:bg-white/90 backdrop-blur-sm border border-white/60 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-1"
             >
               <Download className="w-5 h-5 mr-2" />
               Download Resume
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

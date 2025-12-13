@@ -46,12 +46,6 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
           ))}
         </div>
 
-        {/* Artifact Placeholder */}
-        <div className="mb-6 p-6 border-2 border-dashed border-slate-200 rounded-xl bg-slate-50/50 flex flex-col items-center justify-center text-slate-400 gap-2 min-h-[120px] hover:bg-slate-50 transition-colors cursor-default">
-          <Image size={24} />
-          <span className="text-xs font-semibold uppercase tracking-wider">Project Artifact / Media</span>
-        </div>
-
         {/* Reflection Section */}
         {project.reflection && (
            <div className="bg-brand-50/50 rounded-xl p-6 border border-brand-100 mt-auto">
