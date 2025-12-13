@@ -1,20 +1,66 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Rutvi Shah - E-Portfolio
 
-# Run and deploy your AI Studio app
+A modern, responsive portfolio website showcasing my professional experience, projects, skills, and academic journey in Project Management and Business Operations.
 
-This contains everything you need to run your app locally.
+## 🌐 Live Demo
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Ko-LAXWzM0ICSy3W3CElrrQjTjkAxlhQ
+Visit: [https://your-username.github.io/E-portfolio/](https://your-username.github.io/E-portfolio/)
 
-## Run Locally
+## ✨ Features
 
-**Prerequisites:**  Node.js
+- **Responsive Design** - Optimized for all devices
+- **Interactive UI** - Smooth animations with Framer Motion
+- **Contact Form** - Integrated email functionality
+- **Resume Download** - One-click PDF download
+- **Modern Stack** - Built with React, TypeScript, and Vite
 
+## 🛠️ Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide Icons
+- EmailJS
+
+## 🚀 Run Locally
+
+**Prerequisites:** Node.js (v18+)
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/E-portfolio.git
+   cd E-portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file with your EmailJS credentials:
+   ```
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+The build output will be in the `dist` folder.
+
+## 📄 License
+
+© 2025 Rutvi Shah. All rights reserved.
