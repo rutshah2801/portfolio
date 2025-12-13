@@ -23,7 +23,7 @@ export const PERSONAL_INFO = {
   location: "Boston, MA",
   phone: "+1 (617) 505-0774",
   email: "rutshah2801@gmail.com",
-  linkedin: "https://www.linkedin.com/in/rutvishah", 
+  linkedin: "https://www.linkedin.com/in/rutvi-shah28/", 
   summary: "I am a Project Management Professional with a strong foundation in Finance and Business Operations. Currently pursuing my MS at Northeastern University, I specialize in bridging the gap between technical data and strategic decision-making. My professional journey—from streamlining supply chains to developing performance dashboards—is defined by a commitment to efficiency, accuracy, and data-driven results.",
   learningPhilosophy: "I believe that true learning happens at the intersection of theory and practice. My approach involves rigorous analysis of data ('what happened?'), empathetic understanding of stakeholders ('why did it happen?'), and strategic application of frameworks ('how do we improve?'). I view every project not just as a task to complete, but as an opportunity to refine this cycle of inquiry and execution."
 };
