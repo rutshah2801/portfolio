@@ -9,6 +9,13 @@ type ActiveProjectPdf = {
   label: string;
 };
 
+type PreviewConfig = {
+  url: string;
+  canEmbedInIframe: boolean;
+  isPowerPoint: boolean;
+  fallbackMessage?: string;
+};
+
 const resolvePublicAssetPath = (assetPath: string): string => {
   const base = import.meta.env.BASE_URL || '/';
   const normalizedBase = base.endsWith('/') ? base : `${base}/`;
@@ -16,16 +23,36 @@ const resolvePublicAssetPath = (assetPath: string): string => {
   return `${normalizedBase}${normalizedAsset}`;
 };
 
-const getPreviewUrl = (assetPath: string): string => {
+const getPreviewConfig = (assetPath: string): PreviewConfig => {
   const resolvedPath = resolvePublicAssetPath(assetPath);
   const isPowerPoint = /\.(ppt|pptx)$/i.test(assetPath);
 
   if (!isPowerPoint) {
-    return resolvedPath;
+    return {
+      url: resolvedPath,
+      canEmbedInIframe: true,
+      isPowerPoint: false,
+    };
+  }
+
+  const host = window.location.hostname;
+  const isLocalHost = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+
+  if (isLocalHost) {
+    return {
+      url: resolvedPath,
+      canEmbedInIframe: false,
+      isPowerPoint: true,
+      fallbackMessage: 'PowerPoint preview is not available in the popup while running locally. Open the file in a new tab or download it.',
+    };
   }
 
   const absoluteUrl = new URL(resolvedPath, window.location.origin).toString();
-  return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`;
+  return {
+    url: `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`,
+    canEmbedInIframe: true,
+    isPowerPoint: true,
+  };
 };
 
 const ProjectCard: React.FC<{
@@ -119,6 +146,7 @@ const ProjectCard: React.FC<{
 
 const Projects: React.FC = () => {
   const [activePdfAsset, setActivePdfAsset] = useState<ActiveProjectPdf | null>(null);
+  const activePreviewConfig = activePdfAsset ? getPreviewConfig(activePdfAsset.path) : null;
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
@@ -181,11 +209,27 @@ const Projects: React.FC = () => {
                 <X size={18} />
               </button>
             </div>
-            <iframe
-              src={encodeURI(getPreviewUrl(activePdfAsset.path))}
-              title="Project Document Preview"
-              className="w-full h-[calc(85vh-57px)]"
-            />
+            {activePreviewConfig?.canEmbedInIframe ? (
+              <iframe
+                src={activePreviewConfig.url}
+                title="Project Document Preview"
+                className="w-full h-[calc(85vh-57px)]"
+              />
+            ) : (
+              <div className="h-[calc(85vh-57px)] flex flex-col items-center justify-center text-center p-6 bg-slate-50">
+                <p className="text-slate-700 max-w-xl leading-relaxed mb-4">
+                  {activePreviewConfig?.fallbackMessage || 'This file type cannot be previewed in the popup. Open it in a new tab.'}
+                </p>
+                <a
+                  href={activePreviewConfig?.url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors"
+                >
+                  {activePreviewConfig?.isPowerPoint ? 'Open PowerPoint File' : 'Open File'}
+                </a>
+              </div>
+            )}
           </div>
         </div>
       )}
