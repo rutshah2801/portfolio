@@ -14,12 +14,15 @@ const Hero: React.FC = () => {
     if (!ctx) return;
 
     let animationFrameId: number;
+    let lastDrawTime = 0;
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
       if (parent) {
-        canvas.width = parent.clientWidth;
-        canvas.height = parent.clientHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.floor(parent.clientWidth * dpr);
+        canvas.height = Math.floor(parent.clientHeight * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       }
     };
 
@@ -35,12 +38,20 @@ const Hero: React.FC = () => {
       ctx.closePath();
     };
 
-    const draw = () => {
+    const draw = (timestamp: number) => {
       if (!canvas || !ctx) return;
+
+      // Cap rendering to ~30fps to reduce CPU/GPU load.
+      if (timestamp - lastDrawTime < 33) {
+        animationFrameId = requestAnimationFrame(draw);
+        return;
+      }
+      lastDrawTime = timestamp;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       const time = Date.now() * 0.0005; // Speed of the wave
-      const r = 30; // Hexagon radius
+      const r = 40; // Larger cells means fewer draw calls
       const a = 2 * Math.PI / 6;
       const w = r * Math.sqrt(3); // Horizontal distance
       const h = r * 2; // Vertical height
@@ -94,7 +105,7 @@ const Hero: React.FC = () => {
 
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
-    draw();
+  animationFrameId = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);

@@ -4,12 +4,26 @@ import { Award, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CertificationItem } from '../types';
 
+const parseDate = (dateValue: string): Date | null => {
+  const isoDatePattern = /^\d{4}-\d{2}-\d{2}$/;
+  const parsed = isoDatePattern.test(dateValue)
+    ? new Date(`${dateValue}T00:00:00Z`)
+    : new Date(dateValue);
+
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+};
+
 const formatMonthYear = (isoDate: string): string => {
+  const parsedDate = parseDate(isoDate);
+  if (!parsedDate) {
+    return 'Date TBD';
+  }
+
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
     year: 'numeric',
     timeZone: 'UTC',
-  }).format(new Date(`${isoDate}T00:00:00Z`));
+  }).format(parsedDate);
 };
 
 const getStatusPill = (status?: CertificationItem['status']) => {
@@ -34,9 +48,11 @@ const getStatusPill = (status?: CertificationItem['status']) => {
 };
 
 const Certifications: React.FC = () => {
-  const sortedCertifications = [...CERTIFICATIONS].sort((a, b) =>
-    b.completedAt.localeCompare(a.completedAt)
-  );
+  const sortedCertifications = [...CERTIFICATIONS].sort((a, b) => {
+    const dateA = parseDate(a.completedAt)?.getTime() ?? 0;
+    const dateB = parseDate(b.completedAt)?.getTime() ?? 0;
+    return dateB - dateA;
+  });
 
   return (
     <section id="certifications" className="py-24 relative overflow-hidden">

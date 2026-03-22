@@ -3,10 +3,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
     return {
-      // For GitHub Pages: replace 'E-portfolio' with your actual repo name
-      base: '/',
+      // Keep local dev at root, but use repo subpath for GitHub Pages production deploys.
+      base: mode === 'production' ? '/E-portfolio/' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
