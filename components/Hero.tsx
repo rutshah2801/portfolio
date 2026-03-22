@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       const time = Date.now() * 0.0005; // Speed of the wave
-      const r = 40; // Larger cells means fewer draw calls
+      const r = 20; // Larger cells means fewer draw calls
       const a = 2 * Math.PI / 6;
       const w = r * Math.sqrt(3); // Horizontal distance
       const h = r * 2; // Vertical height
