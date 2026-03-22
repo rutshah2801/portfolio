@@ -52,7 +52,7 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto mb-16 bg-gradient-to-br from-indigo-50 to-white backdrop-blur-md rounded-2xl p-8 border border-brand-100 shadow-md relative overflow-hidden"
+          className="max-w-4xl mx-auto mb-16 bg-gradient-to-br from-purple-50 to-white backdrop-blur-md rounded-2xl p-8 border border-brand-100 shadow-md relative overflow-hidden"
         >
           <div className="absolute top-0 right-0 p-8 opacity-5">
             <Brain size={120} />

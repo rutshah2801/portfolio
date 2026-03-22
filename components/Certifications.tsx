@@ -23,7 +23,7 @@ const getStatusPill = (status?: CertificationItem['status']) => {
   if (status === 'expected') {
     return {
       label: 'Expected',
-      className: 'bg-blue-50 text-blue-700 border border-blue-200',
+      className: 'bg-purple-50 text-purple-700 border border-purple-200',
     };
   }
 

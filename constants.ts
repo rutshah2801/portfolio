@@ -261,122 +261,8 @@ export const CERTIFICATIONS: CertificationItem[] = [
   {
     name: "Microsoft Power BI Data Analyst Associate (PL-300) Cert Prep",
     issuer: "Microsoft Press / LinkedIn Learning",
-    completedAt: "2025-10-27",
-    link: "https://www.linkedin.com/learning/microsoft-power-bi-data-analyst-associate-pl-300-cert-prep-by-microsoft-press-2024",
-  },
-  {
-    name: "Global Strategy",
-    issuer: "LinkedIn Learning (Anil Gupta)",
-    completedAt: "2025-10-19",
-    link: "https://www.linkedin.com/learning/global-strategy",
-  },
-  {
-    name: "Managing Globally",
-    issuer: "LinkedIn Learning (Paula Caligiuri)",
-    completedAt: "2025-09-29",
-    link: "https://www.linkedin.com/learning/managing-globally",
-  },
-  {
-    name: "Best Practices for Managing Global Projects",
-    issuer: "LinkedIn Learning (Sam Yankelevitch)",
-    completedAt: "2025-09-28",
-    link: "https://www.linkedin.com/learning/best-practices-for-managing-global-projects",
-  },
-  {
-    name: "Project Resource Management",
-    issuer: "LinkedIn Learning (Claudine Peet)",
-    completedAt: "2025-06-19",
-    link: "https://www.linkedin.com/learning/project-resource-management",
-  },
-  {
-    name: "Accounting Foundations: Cost Estimating",
-    issuer: "LinkedIn Learning (Ajay Pangarkar)",
-    completedAt: "2025-06-06",
-    link: "https://www.linkedin.com/learning/accounting-foundations-cost-estimating",
-  },
-  {
-    name: "Project Management Foundations: Schedules",
-    issuer: "LinkedIn Learning (Bonnie Biafore)",
-    completedAt: "2025-05-24",
-    link: "https://www.linkedin.com/learning/project-management-foundations-schedules",
-  },
-  {
-    name: "Implementing Supply Chain Management",
-    issuer: "LinkedIn Learning (Daniel Stanton)",
-    completedAt: "2025-05-19",
-    link: "https://www.linkedin.com/learning/implementing-supply-chain-management",
-  },
-  {
-    name: "Supply Chain Foundations: Managing the Process",
-    issuer: "LinkedIn Learning (Steven Brown)",
-    completedAt: "2025-05-07",
-    link: "https://www.linkedin.com/learning/supply-chain-foundations-managing-the-process",
-  },
-  {
-    name: "Business Analysis: Essential Tools and Techniques (2021)",
-    issuer: "LinkedIn Learning (Jamie Champagne)",
-    completedAt: "2025-05-06",
-    link: "https://www.linkedin.com/learning/business-analysis-essential-tools-and-techniques-2021",
-  },
-  {
-    name: "Job Skills: Supply Chain and Operations",
-    issuer: "LinkedIn Learning (Daniel Stanton)",
-    completedAt: "2025-05-06",
-    link: "https://www.linkedin.com/learning/job-skills-supply-chain-and-operations",
-  },
-  {
-    name: "Learning Microsoft Power Apps",
-    issuer: "LinkedIn Learning (Gini von Courter)",
-    completedAt: "2025-05-01",
-    link: "https://www.linkedin.com/learning/learning-microsoft-power-apps",
-  },
-  {
-    name: "Data Analytics for Business Professionals (2018)",
-    issuer: "LinkedIn Learning (John Johnson)",
-    completedAt: "2025-03-29",
-    link: "https://www.linkedin.com/learning/data-analytics-for-business-professionals-2018",
-  },
-  {
-    name: "Power BI Essential Training (2024)",
-    issuer: "LinkedIn Learning (Gini von Courter)",
-    completedAt: "2025-03-19",
-    link: "https://www.linkedin.com/learning/power-bi-essential-training-2024",
-  },
-  {
-    name: "Project Management: Preventing Scope Creep",
-    issuer: "LinkedIn Learning (Oliver Yarbrough)",
-    completedAt: "2025-01-25",
-    link: "https://www.linkedin.com/learning/project-management-preventing-scope-creep",
-  },
-  {
-    name: "Requirements Elicitation for Business Analysis: Stakeholder Conversations",
-    issuer: "LinkedIn Learning (Angela Wick)",
-    completedAt: "2025-01-17",
-    link: "https://www.linkedin.com/learning/requirements-elicitation-for-business-analysis-stakeholder-conversations",
-  },
-  {
-    name: "Project Management Foundations: Requirements",
-    issuer: "LinkedIn Learning (Daniel Stanton)",
-    completedAt: "2025-01-10",
-    link: "https://www.linkedin.com/learning/project-management-foundations-requirements",
-  },
-  {
-    name: "Supply Chain Foundations: Project Management",
-    issuer: "LinkedIn Learning (Daniel Stanton)",
-    completedAt: "2024-12-15",
-    link: "https://www.linkedin.com/learning/supply-chain-foundations-project-management",
-  },
-  {
-    name: "Project Management: International Projects",
-    issuer: "LinkedIn Learning (Sam Yankelevitch)",
-    completedAt: "2024-12-09",
-    link: "https://www.linkedin.com/learning/project-management-international-projects",
-  },
-  {
-    name: "Managing Project Stakeholders",
-    issuer: "LinkedIn Learning (Natasha Kasimtseva)",
-    completedAt: "2024-11-20",
-    link: "https://www.linkedin.com/learning/managing-project-stakeholders",
+    completedAt: "November 6, 2025",
+    link: "https://www.linkedin.com/learning/certificates/522a8ebfa63fdcc0beba25527a8d968a78ddbcc109e6616b7c14cd9277c5d70d?trk=share_certificate&accountId=0&u=0&success=true&authUUID=oMHLKXjUSFSI3chM4rYfrQ%3D%3D",
   },
   {
     name: "Google Business Intelligence Professional Certificate",
@@ -387,10 +273,9 @@ export const CERTIFICATIONS: CertificationItem[] = [
   },
   {
     name: "Google Project Management Professional Certificate",
-    issuer: "Coursera (Expected)",
+    issuer: "Coursera",
     completedAt: "2025-11-01",
     link: "https://www.coursera.org/professional-certificates/google-project-management",
-    status: "expected",
   }
 ];
 

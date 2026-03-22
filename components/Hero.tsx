@@ -72,10 +72,10 @@ const Hero: React.FC = () => {
           // We want it mostly subtle with peaks of brightness
           const normalizedWave = (wave + 1) / 2; // 0 to 1
           
-          // Monochromatic Indigo Styling
+          // Monochromatic Purple Styling
           const opacity = 0.03 + (normalizedWave * 0.15);
           
-          ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`; // Brand-500 equivalent
+          ctx.strokeStyle = `rgba(168, 85, 247, ${opacity})`; // Brand-500 equivalent
           ctx.lineWidth = 1;
           
           drawHexagon(x, y, r);
@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
 
           // Occasionally fill hexagons at the peak of the wave for a "glimmer" effect
           if (normalizedWave > 0.92) {
-            ctx.fillStyle = `rgba(99, 102, 241, ${opacity * 0.5})`;
+            ctx.fillStyle = `rgba(168, 85, 247, ${opacity * 0.5})`;
             ctx.fill();
           }
         }
