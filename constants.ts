@@ -134,37 +134,82 @@ export const EXPERIENCE: WorkExperienceItem[] = [
 
 export const ACADEMIC_PROJECTS: ProjectItem[] = [
   {
-    title: "Benefit-Cost Analysis with Monte Carlo Simulation",
-    course: "ALY 6050",
+    title: "Benefit-Cost Modeling Under Uncertainty",
+    course: "ALY 6050 - Analytics Methods",
     description: [
-      "Developed a comprehensive financial model using Monte Carlo simulation to forecast project costs and returns under uncertainty.",
-      "Ran thousands of iterations to generate probability distributions for key financial metrics."
+      "Built a Monte Carlo-based financial model to evaluate project feasibility under uncertainty rather than relying on single-point estimates.",
+      "Simulated thousands of scenarios to estimate ranges for cost, return, and risk, then translated the outputs into decision-ready insights."
     ],
     tools: ["Excel", "Monte Carlo Simulation", "Risk Analysis", "Financial Modeling"],
     category: 'academic',
-    reflection: "This project fundamentally changed how I think about uncertainty in decision-making. Before this course, I approached financial projections as single-point estimates. Building the Monte Carlo simulation taught me to embrace uncertainty rather than hide from it. The most valuable insight was learning to communicate uncertainty in a way that empowers decision-makers rather than paralyzing them—a skill directly relevant to project management."
+    reflection: "This project changed how I frame business decisions. Instead of presenting one forecast, I learned to show a range of outcomes and the probability of each. That shift made my analysis more honest and more useful. It also strengthened my ability to communicate risk in a way that supports action, which is a core skill for project and operations leadership."
   },
   {
-    title: "International Student Housing Experience Improvement",
-    course: "PJM 6620",
+    title: "International Student Housing Experience Redesign",
+    course: "PJM 6620 - Design Thinking for Projects",
     description: [
-      "Utilized Design Thinking methodology to identify pain points for international students securing housing.",
-      "Conducted empathy interviews, defined problem statements, and prototyped solutions focused on community building."
+      "Applied a full design-thinking process to improve the housing journey for international students, from problem discovery to prototype design.",
+      "Conducted empathy interviews, synthesized user pain points, and developed solution concepts focused on trust, clarity, and community connection."
     ],
     tools: ["Design Thinking", "Empathy Mapping", "Prototyping", "Interviewing"],
     category: 'academic',
-    reflection: "What struck me most was the power of the empathy phase. We discovered that the biggest challenges weren't logistical—they were emotional. This shifted our entire solution approach from 'provide better information' to 'create connection.' Working in a team taught me about the messiness of collaborative creativity; I learned to facilitate divergent thinking while keeping us focused on actionable outcomes."
+    reflection: "The most important lesson was that user problems were as emotional as they were operational. Our strongest ideas came after we stopped assuming and started listening deeply. This project improved my ability to facilitate collaborative ideation, balance divergent thinking with practical constraints, and design solutions people can actually adopt."
   },
   {
-    title: "Change Management Simulation",
-    course: "Organizational Behavior",
+    title: "Organizational Change Leadership Simulation",
+    course: "Organizational Behavior - Change Management",
     description: [
-      "Led a simulated organizational change initiative, making strategic decisions on stakeholder engagement and timing.",
-      "Analyzed resistance patterns and adapted communication strategies for different organizational levels."
+      "Led a simulated enterprise change initiative, making phased decisions on stakeholder alignment, sequencing, and communication strategy.",
+      "Diagnosed resistance patterns across organizational levels and adjusted influence tactics to improve adoption and implementation outcomes."
     ],
     tools: ["Stakeholder Analysis", "Change Management", "Strategic Communication"],
     category: 'academic',
-    reflection: "This simulation was humbling. I went in thinking change management was about clear communication, but I learned it's fundamentally about influence and timing. The simulation revealed that the same change initiative requires completely different approaches depending on your audience. The most surprising lesson was patience—sustainable change happens slower than expected, and pushing too hard creates resistance."
+    reflection: "This simulation taught me that change succeeds through timing and trust, not just communication volume. Different stakeholders required different messages, pacing, and engagement styles. I learned to manage resistance as a signal, not a barrier, and to lead change with patience, sequencing, and credibility."
+  },
+  {
+    title: "HuskyConnect: Innovation Prototype for International Student Success",
+    course: "PJM 6185 - Managing Innovation Projects",
+    description: [
+      "Designed a multi-functional student management prototype called HuskyConnect to support international graduate students through career development, budget planning, and event-based cultural integration.",
+      "Validated and refined the solution through iterative testing, translating user-profile and value-proposition insights into concrete UI/UX decisions such as streamlined navigation, a centralized hub, and improved accessibility."
+    ],
+    tools: ["Innovation Strategy", "Value Proposition Design", "Business Model Design", "Prototyping"],
+    category: 'academic',
+    reflection: "This project taught me how to turn research into product decisions with discipline. We started with broad assumptions, but user feedback and data helped us prioritize what actually mattered: one place for jobs, events, and budgeting with intuitive navigation. I learned that innovation is less about adding features and more about resolving real pain points through iteration. Working on HuskyConnect strengthened my confidence in combining empathy, analytics, and design thinking to build solutions that are practical, inclusive, and user-centered.",
+    pdfAssets: [
+      { label: "Value Proposition and User", path: "/Value Proposition and the User (1).pdf" },
+      { label: "Business Model", path: "/Business Model (1).pdf" },
+      { label: "Innovation Prototype", path: "/Innovation Prototype.pdf" }
+    ]
+  },
+  {
+    title: "Behavior Change Strategy with BPM Implementation Framework",
+    course: "PJM 6620 - Needs Assessments and Strategy Analysis",
+    description: [
+      "Developed a 3-action behavior-change package for international student housing: a plain-language lease review tool, a financial readiness assessment, and a neighborhood safety and amenities report.",
+      "Paired the package with a Business Process Management implementation view using an Identify-Design-Execute-Monitor lifecycle, including process mapping, root-cause analysis, stakeholder alignment, and continuous KPI-based monitoring."
+    ],
+    tools: ["Journey Mapping", "Behavioral Design (CREATE)", "Business Process Management", "Process Mapping", "Root Cause Analysis", "Lean Six Sigma"],
+    category: 'academic',
+    reflection: "This project helped me connect strategy with execution. I learned to move from behavioral diagnosis to process-level implementation by defining interventions and then structuring how they would be designed, deployed, and monitored. The BPM lens made my recommendations more actionable and scalable, and it strengthened my ability to communicate process improvements clearly to both technical and non-technical stakeholders.",
+    pdfAssets: [
+      { label: "Behavior Change Package", path: "/Design for Behavior Change Package.pdf" },
+      { label: "Business Process Management Deck", path: "/Business-Process-Management.pptx" }
+    ]
+  },
+  {
+    title: "TravelNow Prototype and Strategic Recommendation",
+    course: "Group Signature Assignment",
+    description: [
+      "Developed and presented a working prototype for TravelNow covering core user flows: search, booking, payment processing, confirmations, and booking modifications.",
+      "Documented functional and non-functional requirements, stakeholder alignment, and next-step recommendations including usability testing, multilingual support, and AI-enabled personalization."
+    ],
+    tools: ["Power Apps", "Requirements Analysis", "Stakeholder Mapping", "Process Design", "Prototype Testing"],
+    category: 'academic',
+    reflection: "This assignment helped me connect business analysis artifacts to a tangible product experience. I learned how to move from scope and requirements to a practical prototype while keeping stakeholder priorities visible at every stage. Presenting recommendations for scalability and user adoption strengthened my confidence in structuring consulting-style narratives that are both strategic and implementation-ready.",
+    pdfAssets: [
+      { label: "Signature Assignment Deck", path: "/Group2_Signature Assignment.pptx" }
+    ]
   }
 ];
 
@@ -214,22 +259,138 @@ export const SKILLS: SkillCategory[] = [
 
 export const CERTIFICATIONS: CertificationItem[] = [
   {
-    name: "Google Business Intelligence Professional Certificate",
-    issuer: "Coursera",
-    date: "In Progress",
-    //link: "https://www.coursera.org/professional-certificates/google-business-intelligence"
+    name: "Microsoft Power BI Data Analyst Associate (PL-300) Cert Prep",
+    issuer: "Microsoft Press / LinkedIn Learning",
+    completedAt: "2025-10-27",
+    link: "https://www.linkedin.com/learning/microsoft-power-bi-data-analyst-associate-pl-300-cert-prep-by-microsoft-press-2024",
   },
   {
-    name: "Google Project Management Professional Certificate",
-    issuer: "Coursera",
-    date: "Expected Nov. 2025",
-    //link: "https://www.coursera.org/professional-certificates/google-project-management"
+    name: "Global Strategy",
+    issuer: "LinkedIn Learning (Anil Gupta)",
+    completedAt: "2025-10-19",
+    link: "https://www.linkedin.com/learning/global-strategy",
+  },
+  {
+    name: "Managing Globally",
+    issuer: "LinkedIn Learning (Paula Caligiuri)",
+    completedAt: "2025-09-29",
+    link: "https://www.linkedin.com/learning/managing-globally",
+  },
+  {
+    name: "Best Practices for Managing Global Projects",
+    issuer: "LinkedIn Learning (Sam Yankelevitch)",
+    completedAt: "2025-09-28",
+    link: "https://www.linkedin.com/learning/best-practices-for-managing-global-projects",
+  },
+  {
+    name: "Project Resource Management",
+    issuer: "LinkedIn Learning (Claudine Peet)",
+    completedAt: "2025-06-19",
+    link: "https://www.linkedin.com/learning/project-resource-management",
+  },
+  {
+    name: "Accounting Foundations: Cost Estimating",
+    issuer: "LinkedIn Learning (Ajay Pangarkar)",
+    completedAt: "2025-06-06",
+    link: "https://www.linkedin.com/learning/accounting-foundations-cost-estimating",
+  },
+  {
+    name: "Project Management Foundations: Schedules",
+    issuer: "LinkedIn Learning (Bonnie Biafore)",
+    completedAt: "2025-05-24",
+    link: "https://www.linkedin.com/learning/project-management-foundations-schedules",
+  },
+  {
+    name: "Implementing Supply Chain Management",
+    issuer: "LinkedIn Learning (Daniel Stanton)",
+    completedAt: "2025-05-19",
+    link: "https://www.linkedin.com/learning/implementing-supply-chain-management",
   },
   {
     name: "Supply Chain Foundations: Managing the Process",
-    issuer: "LinkedIn Learning",
-    date: "Expected May 2025",
-    //link: "https://www.linkedin.com/learning/supply-chain-foundations-managing-the-process"
+    issuer: "LinkedIn Learning (Steven Brown)",
+    completedAt: "2025-05-07",
+    link: "https://www.linkedin.com/learning/supply-chain-foundations-managing-the-process",
+  },
+  {
+    name: "Business Analysis: Essential Tools and Techniques (2021)",
+    issuer: "LinkedIn Learning (Jamie Champagne)",
+    completedAt: "2025-05-06",
+    link: "https://www.linkedin.com/learning/business-analysis-essential-tools-and-techniques-2021",
+  },
+  {
+    name: "Job Skills: Supply Chain and Operations",
+    issuer: "LinkedIn Learning (Daniel Stanton)",
+    completedAt: "2025-05-06",
+    link: "https://www.linkedin.com/learning/job-skills-supply-chain-and-operations",
+  },
+  {
+    name: "Learning Microsoft Power Apps",
+    issuer: "LinkedIn Learning (Gini von Courter)",
+    completedAt: "2025-05-01",
+    link: "https://www.linkedin.com/learning/learning-microsoft-power-apps",
+  },
+  {
+    name: "Data Analytics for Business Professionals (2018)",
+    issuer: "LinkedIn Learning (John Johnson)",
+    completedAt: "2025-03-29",
+    link: "https://www.linkedin.com/learning/data-analytics-for-business-professionals-2018",
+  },
+  {
+    name: "Power BI Essential Training (2024)",
+    issuer: "LinkedIn Learning (Gini von Courter)",
+    completedAt: "2025-03-19",
+    link: "https://www.linkedin.com/learning/power-bi-essential-training-2024",
+  },
+  {
+    name: "Project Management: Preventing Scope Creep",
+    issuer: "LinkedIn Learning (Oliver Yarbrough)",
+    completedAt: "2025-01-25",
+    link: "https://www.linkedin.com/learning/project-management-preventing-scope-creep",
+  },
+  {
+    name: "Requirements Elicitation for Business Analysis: Stakeholder Conversations",
+    issuer: "LinkedIn Learning (Angela Wick)",
+    completedAt: "2025-01-17",
+    link: "https://www.linkedin.com/learning/requirements-elicitation-for-business-analysis-stakeholder-conversations",
+  },
+  {
+    name: "Project Management Foundations: Requirements",
+    issuer: "LinkedIn Learning (Daniel Stanton)",
+    completedAt: "2025-01-10",
+    link: "https://www.linkedin.com/learning/project-management-foundations-requirements",
+  },
+  {
+    name: "Supply Chain Foundations: Project Management",
+    issuer: "LinkedIn Learning (Daniel Stanton)",
+    completedAt: "2024-12-15",
+    link: "https://www.linkedin.com/learning/supply-chain-foundations-project-management",
+  },
+  {
+    name: "Project Management: International Projects",
+    issuer: "LinkedIn Learning (Sam Yankelevitch)",
+    completedAt: "2024-12-09",
+    link: "https://www.linkedin.com/learning/project-management-international-projects",
+  },
+  {
+    name: "Managing Project Stakeholders",
+    issuer: "LinkedIn Learning (Natasha Kasimtseva)",
+    completedAt: "2024-11-20",
+    link: "https://www.linkedin.com/learning/managing-project-stakeholders",
+  },
+  {
+    name: "Google Business Intelligence Professional Certificate",
+    issuer: "Coursera (In Progress)",
+    completedAt: "2025-12-01",
+    link: "https://www.coursera.org/professional-certificates/google-business-intelligence",
+    status: "in-progress",
+  },
+  {
+    name: "Google Project Management Professional Certificate",
+    issuer: "Coursera (Expected)",
+    completedAt: "2025-11-01",
+    link: "https://www.coursera.org/professional-certificates/google-project-management",
+    status: "expected",
   }
 ];
 

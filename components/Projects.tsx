@@ -1,10 +1,38 @@
-import React from 'react';
-import { PROFESSIONAL_PROJECTS, ACADEMIC_PROJECTS, CERTIFICATIONS } from '../constants';
-import { Award, Briefcase, ExternalLink, GraduationCap, Quote, Image } from 'lucide-react';
+import React, { useState } from 'react';
+import { PROFESSIONAL_PROJECTS, ACADEMIC_PROJECTS } from '../constants';
+import { Briefcase, ExternalLink, GraduationCap, Quote, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ProjectItem } from '../types';
 
-const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ project, index }) => (
+type ActiveProjectPdf = {
+  path: string;
+  label: string;
+};
+
+const resolvePublicAssetPath = (assetPath: string): string => {
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  const normalizedAsset = assetPath.startsWith('/') ? assetPath.slice(1) : assetPath;
+  return `${normalizedBase}${normalizedAsset}`;
+};
+
+const getPreviewUrl = (assetPath: string): string => {
+  const resolvedPath = resolvePublicAssetPath(assetPath);
+  const isPowerPoint = /\.(ppt|pptx)$/i.test(assetPath);
+
+  if (!isPowerPoint) {
+    return resolvedPath;
+  }
+
+  const absoluteUrl = new URL(resolvedPath, window.location.origin).toString();
+  return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(absoluteUrl)}`;
+};
+
+const ProjectCard: React.FC<{
+  project: ProjectItem;
+  index: number;
+  onOpenPdf: (pdfAsset: ActiveProjectPdf) => void;
+}> = ({ project, index, onOpenPdf }) => (
   <motion.div 
     initial={{ opacity: 0, scale: 0.98 }}
     whileInView={{ opacity: 1, scale: 1 }}
@@ -46,6 +74,33 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
           ))}
         </div>
 
+        {project.pdfAssets && project.pdfAssets.length > 0 && (
+          <div className="flex flex-wrap gap-3 mb-6">
+            {project.pdfAssets.map((asset, assetIndex) => (
+              <button
+                key={assetIndex}
+                type="button"
+                onClick={() => onOpenPdf({ path: asset.path, label: asset.label })}
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors"
+              >
+                <ExternalLink size={16} className="mr-2" />
+                {asset.label}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {(!project.pdfAssets || project.pdfAssets.length === 0) && project.pdfAsset && (
+          <button
+            type="button"
+            onClick={() => onOpenPdf({ path: project.pdfAsset!, label: 'Project PDF' })}
+            className="inline-flex items-center px-4 py-2 mb-6 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 transition-colors w-fit"
+          >
+            <ExternalLink size={16} className="mr-2" />
+            View PDF
+          </button>
+        )}
+
         {/* Reflection Section */}
         {project.reflection && (
            <div className="bg-brand-50/50 rounded-xl p-6 border border-brand-100 mt-auto">
@@ -63,6 +118,8 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
 );
 
 const Projects: React.FC = () => {
+  const [activePdfAsset, setActivePdfAsset] = useState<ActiveProjectPdf | null>(null);
+
   return (
     <section id="projects" className="py-24 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -80,7 +137,12 @@ const Projects: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {ACADEMIC_PROJECTS.map((project, index) => (
-              <ProjectCard key={`academic-${index}`} project={project} index={index} />
+              <ProjectCard
+                key={`academic-${index}`}
+                project={project}
+                index={index}
+                onOpenPdf={setActivePdfAsset}
+              />
             ))}
           </div>
         </div>
@@ -93,43 +155,40 @@ const Projects: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 gap-10">
             {PROFESSIONAL_PROJECTS.map((project, index) => (
-              <ProjectCard key={`prof-${index}`} project={project} index={index} />
-            ))}
-          </div>
-        </div>
-
-        {/* Certifications */}
-        <div>
-          <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold text-slate-900 font-heading">Certifications</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {CERTIFICATIONS.map((cert, index) => (
-              <motion.a 
-                key={index}
-                href={cert.link}
-                target="_blank" 
-                rel="noopener noreferrer"
-                whileHover={{ y: -8 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="block bg-white/80 backdrop-blur-sm p-8 rounded-2xl border border-white/50 shadow-sm flex flex-col items-center text-center group hover:border-brand-200 hover:shadow-lg transition-all cursor-pointer relative"
-              >
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ExternalLink size={18} className="text-slate-400" />
-                </div>
-
-                <div className="p-4 bg-yellow-50 rounded-full mb-6 group-hover:bg-yellow-100 transition-colors">
-                  <Award className="text-yellow-500 w-8 h-8" />
-                </div>
-                <h4 className="text-xl font-bold font-heading text-slate-900 mb-3 group-hover:text-brand-700 transition-colors">{cert.name}</h4>
-                <p className="text-brand-600 font-semibold mb-2">{cert.issuer}</p>
-                <p className="text-slate-400 text-sm font-medium bg-slate-50 px-3 py-1 rounded-full inline-block">{cert.date}</p>
-              </motion.a>
+              <ProjectCard
+                key={`prof-${index}`}
+                project={project}
+                index={index}
+                onOpenPdf={setActivePdfAsset}
+              />
             ))}
           </div>
         </div>
 
       </div>
+
+      {activePdfAsset && (
+        <div className="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-5xl h-[85vh] shadow-2xl overflow-hidden border border-slate-200">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 bg-slate-50">
+              <h3 className="font-heading text-lg font-bold text-slate-900">{activePdfAsset.label}</h3>
+              <button
+                type="button"
+                onClick={() => setActivePdfAsset(null)}
+                className="p-2 rounded-md text-slate-600 hover:bg-slate-200 transition-colors"
+                aria-label="Close PDF preview"
+              >
+                <X size={18} />
+              </button>
+            </div>
+            <iframe
+              src={encodeURI(getPreviewUrl(activePdfAsset.path))}
+              title="Project Document Preview"
+              className="w-full h-[calc(85vh-57px)]"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
